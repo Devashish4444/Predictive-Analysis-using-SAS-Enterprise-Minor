@@ -1,0 +1,516 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                April 24, 2020
+Time:                18:51:54
+*------------------------------------------------------------*
+12595  *------------------------------------------------------------*;
+12596  * &msgString;
+12597  *------------------------------------------------------------*;
+12598  filename _flowref "\\apporto.com\dfs\UNCC\Users\skokse_uncc\Desktop\BIA-PROJECT\Predictive Analysis\Workspaces\EMWS2\Trans2\EMFLOWSCORE.sas";
+12599  proc FCMP NOEXECUTE IMPUTEDDEPS OUTDEPS=WORK.TRANS_SCOREINPUTS;
+12600  %INCLUDE _flowref;
+12664  run;
+
+NOTE: Dependency structure written to data set WORK.TRANS_SCOREINPUTS.
+NOTE: PROCEDURE FCMP used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12665  quit;
+12666  data WORK.TRANS_SCOREINPUTS;
+12667  set WORK.TRANS_SCOREINPUTS(keep=RHS rename=(RHS=NAME));
+12668  length UNAME $32;
+12669  UNAME = upcase(NAME);
+12670  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12671  proc sort data=WORK.TRANS_SCOREINPUTS NODUPKEY;
+12672  by UNAME;
+12673  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12674  filename _flowref;
+NOTE: Fileref _FLOWREF has been deassigned.
+12675  %let SYSCC = 0;
+12676  *------------------------------------------------------------*;
+12677  * transformcombinevariables;
+12678  *------------------------------------------------------------*;
+12679  data WORK.TRANS_OUTPUTVARS;
+12680  length Uname inputName $32 inputLevel $10 inputType $1 _MetaFlag 8;
+12681  set
+12682  EMWS2.Trans2_RESULT
+12683  ;
+12684  _MetaFlag=0;
+12685  uname = upcase(name);
+12686  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS2_RESULT.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12687  data _temp;
+12688  length UNAME $32;
+12689  set EMWS2.Trans2_CMeta_TRAIN(keep=NAME LEVEL ROLE TYPE CREATOR LABEL);
+12690  UNAME = upcase(name);
+12691  where upcase(CREATOR) = upcase("Trans2");
+12692  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS2_CMETA_TRAIN.
+      WHERE UPCASE(CREATOR)='TRANS2';
+NOTE: The data set WORK._TEMP has 3 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+12693  proc sort data=_temp(drop=CREATOR);
+12694  by UNAME;
+12695  run;
+
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 3 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12696  proc sort data=WORK.TRANS_OUTPUTVARS;
+12697  by UNAME;
+12698  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 13 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12699  data WORK.TRANS_OUTPUTVARS;
+12700  merge WORK.TRANS_OUTPUTVARS _temp;
+12701  by UNAME;
+12702  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_OUTPUTVARS has 3 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12703  *------------------------------------------------------------*;
+12704  * Trans2: Get Metadata for the Score Inputs Variables;
+12705  *------------------------------------------------------------*;
+12706  data _temp;
+12707  length UNAME $32;
+12708  set EMWS2.Trans2_VariableSet(keep=NAME LEVEL TYPE LABEL);
+12709  UNAME = upcase(name);
+12710  run;
+
+NOTE: There were 97 observations read from the data set EMWS2.TRANS2_VARIABLESET.
+NOTE: The data set WORK._TEMP has 97 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12711  proc sort data=_temp;
+12712  by UNAME;
+12713  run;
+
+NOTE: There were 97 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 97 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12714  data WORK.TRANS_SCOREINPUTS;
+12715  merge WORK.TRANS_SCOREINPUTS(in=_a) _temp(in=_b);
+12716  by UNAME;
+12717  if _a and _b then output;
+12718  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: There were 97 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_SCOREINPUTS has 3 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12719  *------------------------------------------------------------*;
+12720  * Trans2: Computing Summary Statistics;
+12721  *------------------------------------------------------------*;
+12722  proc dmdb data=EMWS2.Trans2_TRAIN classout=WORK.TRANS_CLASSSTATS varout=WORK.TRANS_VARSTATS;
+12723  class
+12724  PCTL_DAYLAST_REV
+12725  PCTL_DOLL24
+12726  PCTL_FREQPRCH
+12727  ;
+12728  var
+12729  DAYLAST_REV
+12730  DOLL24
+12731  FREQPRCH
+12732  ;
+12733  run;
+
+NOTE: Records processed = 48356   Memory used = 511K.
+NOTE: There were 48356 observations read from the data set DATA.CATALOG2010.
+NOTE: There were 48356 observations read from the data set EMWS2.IDS_DATA.
+NOTE: View EMWS2.TRANS2_TRAIN.VIEW used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.14 seconds
+      
+NOTE: There were 48356 observations read from the data set EMWS2.TRANS_TRAIN.
+NOTE: There were 48356 observations read from the data set EMWS2.TRANS2_TRAIN.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 12 observations and 9 variables.
+NOTE: The data set WORK.TRANS_VARSTATS has 3 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.14 seconds
+      
+
+12734  *------------------------------------------------------------*;
+12735  * Trans2: Combine Information and Statistics for Class Variables;
+12736  *------------------------------------------------------------*;
+12737  proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+12738  by NAME;
+12739  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK._TEMP has 3 observations and 13 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12740  proc sort data=WORK.TRANS_CLASSSTATS;
+12741  by NAME;
+12742  run;
+
+NOTE: There were 12 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 12 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12743  data WORK.TRANS_CLASSSTATS(keep=name nlevel nmiss);
+12744  retain nlevel nmiss;
+12745  set WORK.TRANS_CLASSSTATS;
+12746  by Name;
+12747  if first.Name then do;
+12748  nlevel= 0;
+12749  nmiss= 0;
+12750  end;
+12751  if (type='C' and CRAW='') or (type='N' and NRAW=.) then nmiss = FREQUENCY;
+12752  else nlevel + 1;
+12753  if last.name then output;
+12754  run;
+
+NOTE: There were 12 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12755  /*Merge Statistics for Class Output Vars */
+12756  data WORK.TRANS_CLASSSTATS;
+12757  length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+12758  merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b keep=NAME InputName Formula _MetaFlag LEVEL TYPE LABEL);
+12759  by NAME;
+12760  if _a and _b then do;
+12761  SOURCE='Output';
+12762  if _MetaFlag = 1 then _METHOD_="Meta";
+12763  else if Formula eq 'Interaction' then _METHOD_="Computed";
+12764  else if inputName eq '' then _METHOD_="Formula";
+12765  else _METHOD_="Computed";
+12766  if Formula = '' then Formula = "User Code";
+12767  end;
+12768  if _a then output;
+12769  drop inputName LEVEL TYPE _MetaFlag;
+12770  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 3 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12771  /*Merge Statistics for Class Input Vars */
+12772  proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+12773  by NAME;
+12774  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12775  data WORK.TRANS_CLASSSTATS;
+12776  merge WORK.TRANS_CLASSSTATS(in=_a) _temp(in=_b);
+12777  by NAME;
+12778  if _a and _b then do;
+12779  SOURCE='Input';
+12780  _METHOD_="Original";
+12781  end;
+12782  if _a then output;
+12783  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_CLASSSTATS has 3 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12784  *------------------------------------------------------------*;
+12785  * Trans2: Combine Information and Statistics for Interval Variables;
+12786  *------------------------------------------------------------*;
+12787  proc sort data=WORK.TRANS_OUTPUTVARS out=_temp;
+12788  by NAME;
+12789  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_OUTPUTVARS.
+NOTE: The data set WORK._TEMP has 3 observations and 13 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12790  proc sort data=WORK.TRANS_VARSTATS;
+12791  by NAME;
+12792  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: The data set WORK.TRANS_VARSTATS has 3 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12793  *Merge Statistics for Output Vars;
+12794  data WORK.TRANS_VARSTATS;
+12795  length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+12796  merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b keep=NAME Formula InputName _MetaFlag LEVEL TYPE LABEL);
+12797  by NAME;
+12798  if _a and _b then do;
+12799  SOURCE='Output';
+12800  if _MetaFlag = 1 then _METHOD_="Meta";
+12801  else if Formula eq 'Interaction' then _METHOD_="Computed";
+12802  else if inputName eq '' then _METHOD_="Formula";
+12803  else _METHOD_="Computed";
+12804  if Formula = '' then Formula = "Mixture of variables";
+12805  end;
+12806  if _a then output;
+12807  drop inputName LEVEL TYPE _MetaFlag;
+12808  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_VARSTATS has 3 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12809  *Merge Statistics for Input Vars;
+12810  proc sort data=WORK.TRANS_SCOREINPUTS(drop=TYPE LEVEL) out=_temp nodupkey;
+12811  by NAME;
+12812  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_SCOREINPUTS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMP has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12813  data WORK.TRANS_VARSTATS;
+12814  merge WORK.TRANS_VARSTATS(in=_a) _temp(in=_b);
+12815  by NAME;
+12816  if _a and _b then do;
+12817  SOURCE='Input';
+12818  _METHOD_="Original";
+12819  end;
+12820  if _a then output;
+12821  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: There were 3 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK.TRANS_VARSTATS has 3 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12822  *------------------------------------------------------------*;
+12823  * Trans2: Combine statistics for class and interval variables;
+12824  *------------------------------------------------------------*;
+12825  data EMWS2.Trans2_STATISTICS;
+12826  length SOURCE $6 _METHOD_ $8 NAME $32 FORMULA $300;
+12827  label SOURCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_source_vlabel,  NOQUOTE))" _METHOD_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_method_vlabel,  NOQUOTE))" NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" FORMULA =
+12828     "%sysfunc(sasmsg(sashelp.dmine, rpt_formula_vlabel,   NOQUOTE))" NLEVEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel,   NOQUOTE))" N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonmiss_vlabel, NOQUOTE))" NMISS =
+12829     "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))" MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))" MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))" MEAN =
+12830     "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,    NOQUOTE))" STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,     NOQUOTE))" SKEWNESS = "%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel, NOQUOTE))" KURTOSIS =
+12831     "%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+12832  set
+12833  WORK.TRANS_CLASSSTATS
+12834  WORK.TRANS_VARSTATS
+12835  ;
+12836  drop UNAME;
+12837  run;
+
+NOTE: There were 3 observations read from the data set WORK.TRANS_CLASSSTATS.
+NOTE: There were 3 observations read from the data set WORK.TRANS_VARSTATS.
+NOTE: The data set EMWS2.TRANS2_STATISTICS has 6 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.01 seconds
+      
+
+12838  proc sort data=EMWS2.Trans2_STATISTICS;
+12839  by SOURCE _METHOD_ NAME;
+12840  run;
+
+NOTE: There were 6 observations read from the data set EMWS2.TRANS2_STATISTICS.
+NOTE: The data set EMWS2.TRANS2_STATISTICS has 6 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.03 seconds
+      
+
+12841  proc sort data = EMWS2.Trans2_STATISTICS NOTHREADS;
+12842  by SOURCE NAME;
+12843  run;
+
+NOTE: There were 6 observations read from the data set EMWS2.TRANS2_STATISTICS.
+NOTE: The data set EMWS2.TRANS2_STATISTICS has 6 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.00 seconds
+      
+
+12844  title9 ' ';
+12845  proc print data = EMWS2.Trans2_STATISTICS(obs=500) noobs label;
+12846  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervalinputStats_title, NOQUOTE))";
+12847  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12848  var Name NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+12849  where SOURCE eq 'INPUT' and mean ne .;
+12850  run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS2_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS2_STATISTICS.
+      WHERE (SOURCE='INPUT') and (mean not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12851  proc print data = EMWS2.Trans2_STATISTICS(obs=500) noobs label;
+12852  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervaloutputStats_title, NOQUOTE))";
+12853  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12854  var Name _METHOD_ NMISS MIN MAX MEAN STD SKEWNESS KURTOSIS;
+12855  where SOURCE eq 'OUTPUT' and mean ne .;
+12856  run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS2_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS2_STATISTICS.
+      WHERE (SOURCE='OUTPUT') and (mean not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12857  proc print data = EMWS2.Trans2_STATISTICS(obs=500) noobs label;
+12858  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classinputStats_title, NOQUOTE))";
+12859  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12860  var Name NLEVEL NMISS;
+12861  where SOURCE eq 'INPUT' and nlevel ne .;
+12862  run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS2_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS2_STATISTICS.
+      WHERE (SOURCE='INPUT') and (nlevel not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12863  proc print data = EMWS2.Trans2_STATISTICS(obs=500) noobs label;
+12864  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classoutputStats_title, NOQUOTE))";
+12865  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12866  var Name _METHOD_ NLEVEL NMISS;
+12867  where SOURCE eq 'OUTPUT' and nlevel ne .;
+12868  run;
+
+NOTE: No observations were selected from data set EMWS2.TRANS2_STATISTICS.
+NOTE: There were 0 observations read from the data set EMWS2.TRANS2_STATISTICS.
+      WHERE (SOURCE='OUTPUT') and (nlevel not = .);
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12869  title9;
+12870  title10;
+
+12871  data EMWS2.Trans2_EMSCOREVAR;
+12872  length Name $32 formula $300 file $200;
+12873  keep NAME Formula file;
+12874  set EMWS2.Trans2_STATISTICS;
+12875  where SOURCE='Output';
+12876  select( _METHOD_);
+12877  when('Computed') do;
+12878  file="TRANSFORMCODE\"!!strip(NAME)!!'.sas';
+12879  formula = '';
+12880  end;
+12881  when('Formula') do;
+12882  if Formula eq 'Mixture of variables' then do;
+12883  file= "EDITORCODE.sas";
+12884  formula = '';
+12885  end;
+12886  if Formula = 'User Code' then do;
+12887  file= "EDITORCODE.sas";
+12888  formula = '';
+12889  end;
+12890  end;
+12891  otherwise;
+12892  end;
+12893  output;
+12894  run;
+
+NOTE: There were 3 observations read from the data set EMWS2.TRANS2_STATISTICS.
+      WHERE SOURCE='Output';
+NOTE: The data set EMWS2.TRANS2_EMSCOREVAR has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.01 seconds
+      
+

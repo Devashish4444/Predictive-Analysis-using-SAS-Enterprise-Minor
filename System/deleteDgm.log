@@ -1,0 +1,19 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+297        libname _hpdmDat
+297      ! "\\apporto.com\dfs\UNCC\Users\skokse_uncc\Desktop\BIA-PROJECT\Predictive
+297      ! Analysis\Workspaces\EMWS6\HPDM";
+NOTE: Libref _HPDMDAT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\apporto.com\dfs\UNCC\Users\skokse_uncc\Desktop\BIA-PROJECT\Predictive 
+      Analysis\Workspaces\EMWS6\HPDM
+2                                        The SAS System           17:52 Saturday, April 25, 2020
+
+298        libname _hpdmDat;
+NOTE: Libref _HPDMDAT has been deassigned.
+299        proc printto;
+300        run;
+

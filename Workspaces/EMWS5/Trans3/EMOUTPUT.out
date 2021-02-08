@@ -1,0 +1,41 @@
+*------------------------------------------------------------*
+User:                skokse_uncc
+Date:                April 25, 2020
+Time:                17:28:45
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY             2
+INPUT        INTERVAL          18
+INPUT        NOMINAL            6
+REJECTED     INTERVAL           1
+TARGET       BINARY             1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Formula Transformations
+(maximum 500 observations printed)
+ 
+Variable             Measurement
+  Name      Role        Level                                                   Formula
+ 
+  RFM       INPUT     INTERVAL      substr(PCTL_Rev_GiftTimeLast,1,2)|| substr(PCTL_GiftCntAll,1,2)||substr(PCTL_MonetaryValue,1,2)
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

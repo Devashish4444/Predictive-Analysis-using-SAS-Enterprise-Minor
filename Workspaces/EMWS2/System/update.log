@@ -1,0 +1,110 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 24APR2020:19:08:30 
+* 
+*------------------------------------------------------------* 
+32271      %let _HPDMGRIDHOST=;
+32272      %let _HPDMGRIDINSTALLLOC=;
+32273      %let _HPDMGRIDDATASERVER=;
+32274      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 24APR2020:19:08:31 
+* 
+*------------------------------------------------------------* 
+Traverser: WaitingNode "TRANS2" 
+Traverser: WaitingNode "TRANS3" 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Trans : Beginning Update 
+* datetime : 24APR2020:19:08:31 
+* 
+*------------------------------------------------------------* 
+32294      %let _HPDMGRIDHOST=;
+32295      %let _HPDMGRIDINSTALLLOC=;
+32296      %let _HPDMGRIDDATASERVER=;
+32297      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Trans : End Update 
+* datetime : 24APR2020:19:08:32 
+* 
+*------------------------------------------------------------* 
+Traverser: WaitingNode "TRANS3" 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Trans2 : Beginning Update 
+* datetime : 24APR2020:19:08:32 
+* 
+*------------------------------------------------------------* 
+32317      %let _HPDMGRIDHOST=;
+32318      %let _HPDMGRIDINSTALLLOC=;
+32319      %let _HPDMGRIDDATASERVER=;
+32320      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Trans2 : End Update 
+* datetime : 24APR2020:19:08:32 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Trans3 : Beginning Update 
+* datetime : 24APR2020:19:08:33 
+* 
+*------------------------------------------------------------* 
+32340      %let _HPDMGRIDHOST=;
+32341      %let _HPDMGRIDINSTALLLOC=;
+32342      %let _HPDMGRIDDATASERVER=;
+32343      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Trans3 : End Update 
+* datetime : 24APR2020:19:08:33 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+32344      proc printto;
+32345      run;
+

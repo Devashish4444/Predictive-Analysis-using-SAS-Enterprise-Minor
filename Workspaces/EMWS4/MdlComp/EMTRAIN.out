@@ -1,0 +1,205 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+TARGET      BINARY           1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                                        BINNED_KS_
+                                                                               _KS_PROB_                   PROB_
+Obs     TARGET              TARGETLABEL            _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+
+ 1     TargetBuy    Organics Purchase Indicator    0.751     0.502    0.443       0.24        0.44         0.288  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                  _VKS_              _VBINNED_
+                                                                                  PROB_     _VKS_     KS_PROB_
+Obs     TARGET              TARGETLABEL            _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     TargetBuy    Organics Purchase Indicator     0.749     0.497     0.444      0.28     0.439      0.288  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                  _TKS_              _TBINNED_
+                                                                                  PROB_     _TKS_     KS_PROB_
+Obs     TARGET              TARGETLABEL            _TAUR_    _TGINI_     TKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     TargetBuy    Organics Purchase Indicator     0.755     0.509     0.463      0.28     0.456      0.362  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                                        BINNED_KS_
+                                                                               _KS_PROB_                   PROB_
+Obs     TARGET              TARGETLABEL            _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+
+ 1     TargetBuy    Organics Purchase Indicator    0.776     0.552    0.438       0.22        0.436        0.266  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                  _VKS_              _VBINNED_
+                                                                                  PROB_     _VKS_     KS_PROB_
+Obs     TARGET              TARGETLABEL            _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     TargetBuy    Organics Purchase Indicator     0.769     0.538     0.421      0.22     0.419      0.266  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                  _TKS_              _TBINNED_
+                                                                                  PROB_     _TKS_     KS_PROB_
+Obs     TARGET              TARGETLABEL            _TAUR_    _TGINI_     TKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     TargetBuy    Organics Purchase Indicator     0.787     0.574     0.471      0.22     0.463      0.266  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+                                                                Train:                          Valid:
+                                                Valid:         Average          Train:         Average
+Selected    Model                         Misclassification    Squared    Misclassification    Squared
+ Model      Node     Model Description           Rate           Error            Rate           Error
+
+   Y        Tree     Decision Tree             0.18586         0.14156         0.18665         0.14259
+            Tree2    Decision Tree (2)         0.19104         0.14001         0.18602         0.14242
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics Table
+Target: TargetBuy
+
+Data Role=Train
+
+Statistics                                                            Tree       Tree2
+
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff        0.29        0.27
+Train: Kolmogorov-Smirnov Statistic                                   0.44        0.44
+Train: Average Squared Error                                          0.14        0.14
+Train: Roc Index                                                      0.75        0.78
+Train: Cumulative Percent Captured Response                          31.39       31.04
+Train: Percent Captured Response                                     15.23       14.13
+Selection Criterion: Valid: Misclassification Rate                    0.19        0.19
+Train: Total Degrees of Freedom                                   11112.00    11112.00
+Train: Divisor for ASE                                            22224.00    22224.00
+Train: Gain                                                         213.69      210.22
+Train: Gini Coefficient                                               0.50        0.55
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                 0.44        0.44
+Train: Kolmogorov-Smirnov Probability Cutoff                          0.24        0.22
+Train: Cumulative Lift                                                3.14        3.10
+Train: Lift                                                           3.04        2.82
+Train: Maximum Absolute Error                                         0.89        0.95
+Train: Misclassification Rate                                         0.19        0.19
+Train: Sum of Frequencies                                         11112.00    11112.00
+Train: Root Average Squared Error                                     0.38        0.37
+Train: Cumulative Percent Response                                   77.72       76.86
+Train: Percent Response                                              75.40       69.96
+Train: Sum of Squared Errors                                       3145.98     3111.65
+
+
+Data Role=Valid
+
+Statistics                                                            Tree       Tree2
+
+Valid: Kolmogorov-Smirnov Statistic                                   0.44        0.42
+Valid: Average Squared Error                                          0.14        0.14
+Valid: Roc Index                                                      0.75        0.77
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff        0.29        0.27
+Valid: Cumulative Percent Captured Response                          31.40       30.61
+Valid: Percent Captured Response                                     15.41       13.37
+Valid: Divisor for VASE                                           11966.00    11966.00
+Valid: Gain                                                         213.64      205.74
+Valid: Gini Coefficient                                               0.50        0.54
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                 0.44        0.42
+Valid: Kolmogorov-Smirnov Probability Cutoff                          0.28        0.22
+Valid: Cumulative Lift                                                3.14        3.06
+Valid: Lift                                                           3.08        2.68
+Valid: Maximum Absolute Error                                         1.00        0.95
+Valid: Misclassification Rate                                         0.19        0.19
+Valid: Sum of Frequencies                                          5983.00     5983.00
+Valid: Root Average Squared Error                                     0.38        0.38
+Valid: Cumulative Percent Response                                   77.69       75.73
+Valid: Percent Response                                              76.38       66.28
+Valid: Sum of Squared Errors                                       1706.25     1704.23
+
+
+Data Role=Test
+
+Statistics                                                            Tree       Tree2
+
+Test:  Kolmogorov-Smirnov Statistic                                   0.46        0.47
+Test: Average Squared Error                                           0.14        0.14
+Test:  Roc Index                                                      0.76        0.79
+Test:  Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff        0.36        0.27
+Test: Cumulative Percent Captured Response                           31.74       31.40
+Test: Percent Captured Response                                      15.12       14.43
+Test: Divisor for TASE                                            10256.00    10256.00
+Test: Gain                                                          217.26      213.84
+Test:  Gini Coefficient                                               0.51        0.57
+Test:  Bin-Based Two-Way Kolmogorov-Smirnov Statistic                 0.46        0.46
+Test:  Kolmogorov-Smirnov Probability Cutoff                          0.28        0.22
+Test: Cumulative Lift                                                 3.17        3.14
+Test: Lift                                                            3.03        2.89
+Test: Maximum Absolute Error                                          0.89        0.95
+Test: Misclassification Rate                                          0.19        0.18
+Test: Sum of Frequencies                                           5128.00     5128.00
+Test: Root Average Squared Error                                      0.37        0.37
+Test: Cumulative Percent Response                                    78.57       77.73
+Test: Percent Response                                               75.00       71.57
+Test: Sum of Squared Errors                                        1433.64     1411.22
+Test: Sum of Weights Times Freqs                                  10256.00    10256.00
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Event Classification Table
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+Model                         Data                                                      False       True        False       True
+Node     Model Description    Role         Target             Target Label            Negative    Negative    Positive    Positive
+
+Tree     Decision Tree        TRAIN       TargetBuy    Organics Purchase Indicator      1720        8005         354        1033  
+Tree     Decision Tree        VALIDATE    TargetBuy    Organics Purchase Indicator       907        4296         205         575  
+Tree2    Decision Tree (2)    TRAIN       TargetBuy    Organics Purchase Indicator      1627        7919         440        1126  
+Tree2    Decision Tree (2)    VALIDATE    TargetBuy    Organics Purchase Indicator       877        4235         266         605  

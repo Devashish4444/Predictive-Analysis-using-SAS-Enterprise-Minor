@@ -1,0 +1,35 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 25APR2020:22:09:29 
+* 
+*------------------------------------------------------------* 
+11481      %let _HPDMGRIDHOST=;
+11482      %let _HPDMGRIDINSTALLLOC=;
+11483      %let _HPDMGRIDDATASERVER=;
+11484      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 25APR2020:22:09:30 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+11485      proc printto;
+11486      run;
+

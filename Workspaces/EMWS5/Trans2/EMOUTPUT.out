@@ -1,0 +1,43 @@
+*------------------------------------------------------------*
+User:                skokse_uncc
+Date:                April 25, 2020
+Time:                17:24:11
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY             2
+INPUT        INTERVAL          21
+INPUT        NOMINAL            3
+REJECTED     INTERVAL           1
+TARGET       BINARY             1
+ 
+ 
+ 
+Computed Transformations
+(maximum 500 observations printed)
+ 
+                              Input
+Input Name          Role      Level              Name              Level       Formula
+ 
+GiftCntAll          INPUT    INTERVAL    PCTL_GiftCntAll          NOMINAL    Quantile(4)
+MonetaryValue       INPUT    INTERVAL    PCTL_MonetaryValue       NOMINAL    Quantile(4)
+Rev_GiftTimeLast    INPUT    INTERVAL    PCTL_Rev_GiftTimeLast    NOMINAL    Quantile(4)
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

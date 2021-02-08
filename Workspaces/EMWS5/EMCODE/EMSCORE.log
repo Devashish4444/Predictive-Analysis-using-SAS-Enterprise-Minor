@@ -1,0 +1,41 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                April 25, 2020
+Time:                23:25:48
+*------------------------------------------------------------*
+15686  %let syscc = 0;
+15687  *------------------------------------------------------------*;
+15688  * EMCODE: Scoring DATA data;
+15689  *------------------------------------------------------------*;
+15690  data EMWS5.EMCODE_TRAIN
+15691  / view=EMWS5.EMCODE_TRAIN
+15692  ;
+15693  set EMWS5.Ids_DATA
+15694  ;
+15695  run;
+
+NOTE: DATA STEP view saved on file EMWS5.EMCODE_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS5.IDS_DATA.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.04 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.07 seconds
+      
+
+15696  quit;
+
+15698  *------------------------------------------------------------*;
+15699  * EMCODE: Computing metadata for TRAIN data;
+15700  *------------------------------------------------------------*;
+
+NOTE: View EMWS5.EMCODE_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS5.EMCODE_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      

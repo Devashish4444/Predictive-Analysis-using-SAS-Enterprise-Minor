@@ -1,0 +1,424 @@
+*------------------------------------------------------------*
+User:                skokse_uncc
+Date:                April 25, 2020
+Time:                23:10:43
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           INTERVAL           1
+INPUT        BINARY             3
+INPUT        INTERVAL          86
+INPUT        NOMINAL            1
+REJECTED     INTERVAL           2
+REJECTED     NOMINAL            3
+TARGET       BINARY             1
+TARGET       INTERVAL           1
+ 
+ 
+ 
+ 
+ 
+The UNIVARIATE Procedure
+Variable:  MONLAST  (months since last)
+ 
+                            Moments
+ 
+N                       48356    Sum Weights              48356
+Mean               38.6783439    Sum Observations       1870330
+Std Deviation      40.3446077    Variance            1627.68737
+Skewness           1.77073971    Kurtosis            3.30962743
+Uncorrected SS      151048090    Corrected SS          78706823
+Coeff Variation    104.308002    Std Error Mean      0.18346799
+ 
+ 
+              Basic Statistical Measures
+ 
+    Location                    Variability
+ 
+Mean     38.67834     Std Deviation           40.34461
+Median   25.00000     Variance                    1628
+Mode      9.00000     Range                  271.00000
+                      Interquartile Range     43.00000
+ 
+ 
+           Tests for Location: Mu0=0
+ 
+Test           -Statistic-    -----p Value------
+ 
+Student's t    t  210.8179    Pr > |t|    <.0001
+Sign           M   23850.5    Pr >= |M|   <.0001
+Signed Rank    S  5.6886E8    Pr >= |S|   <.0001
+ 
+ 
+                   Tests for Normality
+ 
+Test                  --Statistic---    -----p Value------
+ 
+Kolmogorov-Smirnov    D     0.168855    Pr > D     <0.0100
+Cramer-von Mises      W-Sq  494.5571    Pr > W-Sq  <0.0050
+Anderson-Darling      A-Sq  2833.416    Pr > A-Sq  <0.0050
+ 
+ 
+Quantiles (Definition 5)
+ 
+Level         Quantile
+ 
+100% Max           271
+99%                175
+95%                128
+90%                 97
+75% Q3              52
+50% Median          25
+25% Q1               9
+10%                  4
+5%                   2
+1%                   0
+0% Min               0
+ 
+ 
+        Extreme Observations
+ 
+----Lowest----        ----Highest---
+ 
+Value      Obs        Value      Obs
+ 
+    0    48179          258    15743
+    0    48089          258    42042
+    0    48081          258    46543
+    0    48042          259    11772
+    0    47956          271    17431
+ 
+ 
+                          Histogram                          #  Boxplot                        Normal Probability Plot
+    270+*                                                    1     *         270+                                                  *
+       .*                                                   44     *            |                                                  *
+       .*                                                   83     *            |                                                  *
+       .*                                                   72     *            |                                                  *
+       .*                                                  207     0            |                                                 **
+       .**                                                 611     0            |                                             *****
+       .**                                                 794     0            |                                           ***
+       .***                                               1051     0            |                                         ***  +++++
+       .*****                                             1770     0            |                                      ****++++
+       .*******                                           2651     |            |                                   ****++
+       .******                                            2487     |            |                               ++***
+       .*****************                                 6875  +-----+         |                          +++*****
+       .****************************                     11632  *--+--*         |                     ++*******
+     10+************************************************ 20078  +-----+       10+************************
+        ----+----+----+----+----+----+----+----+----+---                         +----+----+----+----+----+----+----+----+----+----+
+        * may represent up to 419 counts                                             -2        -1         0        +1        +2
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The UNIVARIATE Procedure
+Variable:  TENURE  (months since 1st)
+ 
+                            Moments
+ 
+N                       48356    Sum Weights              48356
+Mean               83.2569898    Sum Observations       4025975
+Std Deviation      60.1049434    Variance            3612.60423
+Skewness            0.6186997    Kurtosis            -0.4277606
+Uncorrected SS      509878037    Corrected SS         174687477
+Coeff Variation    72.1920689    Std Error Mean      0.27332856
+ 
+ 
+              Basic Statistical Measures
+ 
+    Location                    Variability
+ 
+Mean      83.2570     Std Deviation           60.10494
+Median    70.0000     Variance                    3613
+Mode     152.0000     Range                  276.00000
+                      Interquartile Range     97.00000
+ 
+ 
+           Tests for Location: Mu0=0
+ 
+Test           -Statistic-    -----p Value------
+ 
+Student's t    t  304.6041    Pr > |t|    <.0001
+Sign           M   24172.5    Pr >= |M|   <.0001
+Signed Rank    S  5.8432E8    Pr >= |S|   <.0001
+ 
+ 
+                   Tests for Normality
+ 
+Test                  --Statistic---    -----p Value------
+ 
+Kolmogorov-Smirnov    D     0.104894    Pr > D     <0.0100
+Cramer-von Mises      W-Sq  135.7187    Pr > W-Sq  <0.0050
+Anderson-Darling      A-Sq  853.2439    Pr > A-Sq  <0.0050
+ 
+ 
+Quantiles (Definition 5)
+ 
+Level         Quantile
+ 
+100% Max           276
+99%                240
+95%                188
+90%                164
+75% Q3             128
+50% Median          70
+25% Q1              31
+10%                 13
+5%                   8
+1%                   3
+0% Min               0
+ 
+ 
+        Extreme Observations
+ 
+----Lowest----        ----Highest---
+ 
+Value      Obs        Value      Obs
+ 
+    0    47709          276    40953
+    0    44638          276    41335
+    0    41896          276    45977
+    0    39192          276    47279
+    0    39012          276    48118
+ 
+ 
+                          Histogram                          #  Boxplot                        Normal Probability Plot
+    270+**                                                 188     0         270+                                                  *
+       .***                                                373     |            |                                                ***
+       .****                                               606     |            |                                             ****++
+       .*****                                              766     |            |                                           ***++
+       .********                                          1298     |            |                                        ****+
+       .*****************                                 2749     |            |                                     ****+
+       .***************************                       4441     |            |                                 *****
+       .*********************                             3482  +-----+         |                               ***+
+       .**************************                        4385  |     |         |                            ****
+       .**************************                        4380  |  +  |         |                         +***
+       .************************                          4017  *-----*         |                      ++***
+       .**************************************            6436  |     |         |                  ++*****
+       .************************************************  8128  +-----+         |               ******
+     10+******************************************        7107     |          10+****************
+        ----+----+----+----+----+----+----+----+----+---                         +----+----+----+----+----+----+----+----+----+----+
+        * may represent up to 170 counts                                             -2        -1         0        +1        +2
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The UNIVARIATE Procedure
+Variable:  MONLAST  (months since last)
+ 
+                            Moments
+ 
+N                       45193    Sum Weights              45193
+Mean               30.9464298    Sum Observations       1398562
+Std Deviation      27.4969556    Variance            756.082566
+Skewness           1.15544309    Kurtosis            0.60317222
+Uncorrected SS       77449384    Corrected SS        34168883.3
+Coeff Variation    88.8534018    Std Error Mean      0.12934482
+ 
+ 
+              Basic Statistical Measures
+ 
+    Location                    Variability
+ 
+Mean     30.94643     Std Deviation           27.49696
+Median   22.00000     Variance               756.08257
+Mode      9.00000     Range                  116.00000
+                      Interquartile Range     36.00000
+ 
+ 
+           Tests for Location: Mu0=0
+ 
+Test           -Statistic-    -----p Value------
+ 
+Student's t    t  239.2553    Pr > |t|    <.0001
+Sign           M     22269    Pr >= |M|   <.0001
+Signed Rank    S  4.9592E8    Pr >= |S|   <.0001
+ 
+ 
+                   Tests for Normality
+ 
+Test                  --Statistic---    -----p Value------
+ 
+Kolmogorov-Smirnov    D     0.136088    Pr > D     <0.0100
+Cramer-von Mises      W-Sq  281.5075    Pr > W-Sq  <0.0050
+Anderson-Darling      A-Sq  1739.631    Pr > A-Sq  <0.0050
+ 
+ 
+Quantiles (Definition 5)
+ 
+Level         Quantile
+ 
+100% Max           116
+99%                109
+95%                 92
+90%                 75
+75% Q3              45
+50% Median          22
+25% Q1               9
+10%                  4
+5%                   2
+1%                   0
+0% Min               0
+ 
+ 
+        Extreme Observations
+ 
+----Lowest----        ----Highest---
+ 
+Value      Obs        Value      Obs
+ 
+    0    45020          116    41504
+    0    44936          116    43197
+    0    44929          116    43544
+    0    44891          116    43545
+    0    44808          116    44141
+ 
+ 
+                          Histogram                          #  Boxplot                        Normal Probability Plot
+  117.5+**                                                 147     0       117.5+                                                  *
+       .**                                                 265     0            |                                                 **
+       .****                                               565     0            |                                             *****
+       .****                                               537     0            |                                           ***
+       .***                                                393     |            |                                          **     ++
+       .*****                                              600     |            |                                         **    ++
+       .****                                               500     |            |                                        **   ++
+       .********                                          1155     |            |                                      ***  ++
+       .***                                                358     |            |                                      *   +
+       .****                                               479     |            |                                     ** ++
+       .******                                             836     |            |                                    **++
+       .******                                             812     |            |                                   **+
+       .************                                      1728     |            |                                  **
+       .*********                                         1267     |            |                                +**
+       .***************                                   2050  +-----+         |                               ***
+       .*************                                     1825  |     |         |                             +**
+       .*************                                     1759  |     |         |                           ++**
+       .***********************                           3205  |  +  |         |                         ++***
+       .*******************                               2635  |     |         |                       ++ **
+       .****************************                      4019  *-----*         |                      + ***
+       .**************************                        3667  |     |         |                    +****
+       .*****************************                     4172  |     |         |                  +***
+       .************************************************  6928  +-----+         |             *******
+    2.5+*************************************             5291     |         2.5+**************++
+        ----+----+----+----+----+----+----+----+----+---                         +----+----+----+----+----+----+----+----+----+----+
+        * may represent up to 145 counts                                             -2        -1         0        +1        +2
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+The UNIVARIATE Procedure
+Variable:  TENURE  (months since 1st)
+ 
+                            Moments
+ 
+N                       45193    Sum Weights              45193
+Mean               77.4925984    Sum Observations       3502123
+Std Deviation      57.1824839    Variance            3269.83647
+Skewness           0.72960944    Kurtosis            -0.1831531
+Uncorrected SS      419159061    Corrected SS         147770450
+Coeff Variation    73.7908976    Std Error Mean      0.26898461
+ 
+ 
+              Basic Statistical Measures
+ 
+    Location                    Variability
+ 
+Mean     77.49260     Std Deviation           57.18248
+Median   64.00000     Variance                    3270
+Mode      9.00000     Range                  270.00000
+                      Interquartile Range     87.00000
+ 
+ 
+           Tests for Location: Mu0=0
+ 
+Test           -Statistic-    -----p Value------
+ 
+Student's t    t  288.0931    Pr > |t|    <.0001
+Sign           M     22591    Pr >= |M|   <.0001
+Signed Rank    S  5.1036E8    Pr >= |S|   <.0001
+ 
+ 
+                   Tests for Normality
+ 
+Test                  --Statistic---    -----p Value------
+ 
+Kolmogorov-Smirnov    D     0.106324    Pr > D     <0.0100
+Cramer-von Mises      W-Sq  138.0343    Pr > W-Sq  <0.0050
+Anderson-Darling      A-Sq  863.1383    Pr > A-Sq  <0.0050
+ 
+ 
+Quantiles (Definition 5)
+ 
+Level         Quantile
+ 
+100% Max           270
+99%                236
+95%                180
+90%                156
+75% Q3             116
+50% Median          64
+25% Q1              29
+10%                 12
+5%                   8
+1%                   3
+0% Min               0
+ 
+ 
+        Extreme Observations
+ 
+----Lowest----        ----Highest---
+ 
+Value      Obs        Value      Obs
+ 
+    0    44570          270    30580
+    0    41672          270    40863
+    0    39114          270    41736
+    0    36544          270    42452
+    0    36374          270    44341
+ 
+ 
+                          Histogram                          #  Boxplot                        Normal Probability Plot
+    270+*                                                  116     0         270+                                                  *
+       .**                                                 274     0            |                                                 **
+       .***                                                450     |            |                                              ****+
+       .****                                               576     |            |                                            ***+++
+       .******                                             988     |            |                                         ****++
+       .************                                      2009     |            |                                      ****+
+       .*********************                             3527     |            |                                  *****+
+       .******************                                2911     |            |                                ***+
+       .**************************                        4274  +-----+         |                             ****
+       .**************************                        4380  |     |         |                          +***
+       .************************                          4017  *--+--*         |                      ++****
+       .**************************************            6436  |     |         |                   ++****
+       .************************************************  8128  +-----+         |               *******
+     10+******************************************        7107     |          10+****************
+        ----+----+----+----+----+----+----+----+----+---                         +----+----+----+----+----+----+----+----+----+----+
+        * may represent up to 170 counts                                             -2        -1         0        +1        +2
+ 
+ 
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

@@ -1,0 +1,43 @@
+*------------------------------------------------------------*
+User:                skokse_uncc
+Date:                April 24, 2020
+Time:                18:46:57
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY             3
+INPUT        INTERVAL          86
+INPUT        NOMINAL            1
+REJECTED     INTERVAL           2
+REJECTED     NOMINAL            3
+TARGET       BINARY             1
+TARGET       INTERVAL           1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Formula Transformations
+(maximum 500 observations printed)
+ 
+ Variable               Measurement
+   Name        Role        Level        Formula
+ 
+DAYLAST_REV    INPUT     INTERVAL      -1*daylast
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

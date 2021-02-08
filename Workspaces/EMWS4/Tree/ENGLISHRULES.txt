@@ -1,0 +1,141 @@
+*------------------------------------------------------------*
+ Node = 6
+*------------------------------------------------------------*
+if Age >= 44.5 or MISSING
+AND Affluence Grade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 6
+ Number of Observations = 7581
+ Predicted: TargetBuy=1 = 0.13
+ Predicted: TargetBuy=0 = 0.87
+ 
+*------------------------------------------------------------*
+ Node = 9
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND Affluence Grade < 9.5
+then 
+ Tree Node Identifier   = 9
+ Number of Observations = 600
+ Predicted: TargetBuy=1 = 0.23
+ Predicted: TargetBuy=0 = 0.77
+ 
+*------------------------------------------------------------*
+ Node = 10
+*------------------------------------------------------------*
+if Gender IS ONE OF: F
+AND Age < 44.5
+AND Affluence Grade >= 9.5 or MISSING
+then 
+ Tree Node Identifier   = 10
+ Number of Observations = 888
+ Predicted: TargetBuy=1 = 0.78
+ Predicted: TargetBuy=0 = 0.22
+ 
+*------------------------------------------------------------*
+ Node = 14
+*------------------------------------------------------------*
+if Age >= 44.5 or MISSING
+AND Affluence Grade < 16.5 AND Affluence Grade >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 14
+ Number of Observations = 686
+ Predicted: TargetBuy=1 = 0.38
+ Predicted: TargetBuy=0 = 0.62
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if Gender IS ONE OF: F
+AND Age < 44.5
+AND Affluence Grade < 6.5
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 305
+ Predicted: TargetBuy=1 = 0.34
+ Predicted: TargetBuy=0 = 0.66
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND Affluence Grade < 14.5 AND Affluence Grade >= 9.5 or MISSING
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 345
+ Predicted: TargetBuy=1 = 0.46
+ Predicted: TargetBuy=0 = 0.54
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND Affluence Grade >= 14.5
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 54
+ Predicted: TargetBuy=1 = 0.89
+ Predicted: TargetBuy=0 = 0.11
+ 
+*------------------------------------------------------------*
+ Node = 31
+*------------------------------------------------------------*
+if Age >= 44.5 or MISSING
+AND Affluence Grade >= 19.5
+then 
+ Tree Node Identifier   = 31
+ Number of Observations = 31
+ Predicted: TargetBuy=1 = 1.00
+ Predicted: TargetBuy=0 = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 32
+*------------------------------------------------------------*
+if Gender IS ONE OF: F
+AND Age < 39.5 or MISSING
+AND Affluence Grade < 9.5 AND Affluence Grade >= 6.5 or MISSING
+then 
+ Tree Node Identifier   = 32
+ Number of Observations = 334
+ Predicted: TargetBuy=1 = 0.61
+ Predicted: TargetBuy=0 = 0.39
+ 
+*------------------------------------------------------------*
+ Node = 33
+*------------------------------------------------------------*
+if Gender IS ONE OF: F
+AND Age < 44.5 AND Age >= 39.5
+AND Affluence Grade < 9.5 AND Affluence Grade >= 6.5 or MISSING
+then 
+ Tree Node Identifier   = 33
+ Number of Observations = 197
+ Predicted: TargetBuy=1 = 0.43
+ Predicted: TargetBuy=0 = 0.57
+ 
+*------------------------------------------------------------*
+ Node = 50
+*------------------------------------------------------------*
+if Gender IS ONE OF: M, F
+AND Age >= 44.5 or MISSING
+AND Affluence Grade < 19.5 AND Affluence Grade >= 16.5 or MISSING
+then 
+ Tree Node Identifier   = 50
+ Number of Observations = 80
+ Predicted: TargetBuy=1 = 0.74
+ Predicted: TargetBuy=0 = 0.26
+ 
+*------------------------------------------------------------*
+ Node = 51
+*------------------------------------------------------------*
+if Gender equals Missing
+AND Age >= 44.5 or MISSING
+AND Affluence Grade < 19.5 AND Affluence Grade >= 16.5 or MISSING
+then 
+ Tree Node Identifier   = 51
+ Number of Observations = 11
+ Predicted: TargetBuy=1 = 0.27
+ Predicted: TargetBuy=0 = 0.73
+ 

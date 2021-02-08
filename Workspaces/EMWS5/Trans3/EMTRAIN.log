@@ -1,0 +1,147 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                April 25, 2020
+Time:                17:28:39
+*------------------------------------------------------------*
+11423  proc freq data=EMWS5.Trans3_VariableSet noprint;
+11424  table ROLE*LEVEL/out=WORK.Trans3META;
+11425  run;
+
+NOTE: There were 28 observations read from the data set EMWS5.TRANS3_VARIABLESET.
+NOTE: The data set WORK.TRANS3META has 5 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11426  proc print data=WORK.Trans3META label noobs;
+11427  var ROLE LEVEL COUNT;
+11428  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11429  title9 ' ';
+11430  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11431  run;
+
+NOTE: There were 5 observations read from the data set WORK.TRANS3META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11432  title10;
+
+11433  data WORK.M2WY6KWQ;
+11434  set WORK.M2WY6KWQ;
+11435  if (METHOD='NONE' and ROLE ne 'FREQ') or (role = 'REJECTED' and METHOD = 'DEFAULT') then delete;
+11436  run;
+
+NOTE: There were 28 observations read from the data set WORK.M2WY6KWQ.
+NOTE: The data set WORK.M2WY6KWQ has 27 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: There were 9686 observations read from the data set DATA.PVA97NK.
+NOTE: There were 9686 observations read from the data set EMWS5.IDS_DATA.
+NOTE: View EMWS5.TRANS2_TRAIN.VIEW used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.06 seconds
+      
+NOTE: There were 9686 observations read from the data set EMWS5.TRANS_TRAIN.
+11501  *------------------------------------------------------------*;
+11502  * Trans: Computing Summary Statistics;
+11503  *------------------------------------------------------------*;
+11504  data WORK.M3I0PLDJ;
+11505  set WORK.M3I0PLDJ;
+11506  if (role = 'REJECTED') then role = 'INPUT';
+11507  run;
+
+NOTE: There were 27 observations read from the data set WORK.M3I0PLDJ.
+NOTE: The data set WORK.M3I0PLDJ has 27 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11508  *------------------------------------------------------------* ;
+11509  * EM: DMDBClass Macro ;
+11510  *------------------------------------------------------------* ;
+11511  %macro DMDBClass;
+11512      DemCluster(ASC) DemGender(ASC) DemHomeOwner(ASC) PCTL_GiftCntAll(ASC)
+11513     PCTL_MonetaryValue(ASC) PCTL_Rev_GiftTimeLast(ASC) StatusCat96NK(ASC)
+11514     StatusCatStarAll(ASC) TargetB(DESC)
+11515  %mend DMDBClass;
+11516  *------------------------------------------------------------* ;
+11517  * EM: DMDBVar Macro ;
+11518  *------------------------------------------------------------* ;
+11519  %macro DMDBVar;
+11520      DemAge DemMedHomeValue DemMedIncome DemPctVeterans GiftAvg36 GiftAvgAll
+11521     GiftAvgCard36 GiftAvgLast GiftCnt36 GiftCntCard36 GiftCntCardAll GiftTimeFirst
+11522     PromCnt12 PromCnt36 PromCntAll PromCntCard12 PromCntCard36 PromCntCardAll
+11523  %mend DMDBVar;
+11524  *------------------------------------------------------------*;
+11525  * EM: Create DMDB;
+11526  *------------------------------------------------------------*;
+11527  proc dmdb batch data=EMWS5.Trans2_TRAIN
+11528  dmdbcat=WORK.EM_DMDB
+11529  classout=WORK.Transclassout
+11530  maxlevel = 513
+11531  ;
+11532  class %DMDBClass;
+11533  var %DMDBVar;
+11534  target
+11535  TargetB
+11536  ;
+11537  run;
+
+NOTE: Records processed = 9686   Memory used = 511K.
+NOTE: There were 9686 observations read from the data set DATA.PVA97NK.
+NOTE: There were 9686 observations read from the data set EMWS5.IDS_DATA.
+NOTE: View EMWS5.TRANS2_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+NOTE: There were 9686 observations read from the data set EMWS5.TRANS_TRAIN.
+NOTE: There were 9686 observations read from the data set EMWS5.TRANS2_TRAIN.
+NOTE: The data set WORK.TRANSCLASSOUT has 81 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.09 seconds
+      
+
+11538  quit;
+11539  *--- end code ---*;
+
+11540  data WORK.TransINTERVALMETA;
+11541  set WORK.M2WY6KWQ;
+11542  if LEVEL ne 'INTERVAL' then delete;
+11543  run;
+
+NOTE: There were 27 observations read from the data set WORK.M2WY6KWQ.
+NOTE: The data set WORK.TRANSINTERVALMETA has 18 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11544  *------------------------------------------------------------*;
+11545  * Trans: Determining Variables to Scale;
+11546  *------------------------------------------------------------*;
+11547  data WORK.M0N_O4TO;
+11548  set WORK.M0N_O4TO;
+11549  where (TYPE="N" and (METHOD in("MAX_NORM", "MAX_CORR", "EQUALIZE", "OP_MAX_NORM", "OP_EQUALIZE"))) or (ROLE eq "FREQ");
+11550  run;
+
+NOTE: There were 0 observations read from the data set WORK.M0N_O4TO.
+      WHERE ((TYPE='N') and METHOD in ('EQUALIZE', 'MAX_CORR', 'MAX_NORM', 'OP_EQUALIZE', 'OP_MAX_NORM')) or (ROLE='FREQ');
+NOTE: The data set WORK.M0N_O4TO has 0 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS5.TRANS2_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.17 seconds
+      

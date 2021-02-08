@@ -1,0 +1,57 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                April 24, 2020
+Time:                19:25:35
+*------------------------------------------------------------*
+12122  *------------------------------------------------------------*;
+12123  * Ids: Computing metadata for DATA data;
+12124  *------------------------------------------------------------*;
+
+NOTE: View EMWS3.IDS_DATA.VIEW used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+12125  data EMWS3.Ids_EMINFO;
+12126  length TARGET KEY $32 DATA $43;
+12127  TARGET="";
+12128  KEY="IDSTABLE";
+12129  DATA="DATA.CATALOG2010";
+12130  output;
+12131  TARGET="RESPOND";
+12132  KEY="DECDATA";
+12133  DATA="EMWS3.Ids_RESPOND_DD";
+12134  output;
+12135  TARGET="RESPOND";
+12136  KEY="DECMETA";
+12137  DATA="EMWS3.Ids_RESPOND_DM";
+12138  output;
+12139  TARGET="";
+12140  KEY="STATS";
+12141  DATA="EMWS3.Ids_EMSTATDEFAULT";
+12142  output;
+12143  run;
+
+NOTE: The data set EMWS3.IDS_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: View EMWS3.IDS_DATA.VIEW used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+12144  data EMWS3.Ids_CMeta_DATA;
+12145  set EMWS3.Ids_VariableSet;
+12146  drop DROP;
+12147  where DROP='N';
+12148  run;
+
+NOTE: There were 98 observations read from the data set EMWS3.IDS_VARIABLESET.
+      WHERE DROP='N';
+NOTE: The data set EMWS3.IDS_CMETA_DATA has 98 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.00 seconds
+      
+

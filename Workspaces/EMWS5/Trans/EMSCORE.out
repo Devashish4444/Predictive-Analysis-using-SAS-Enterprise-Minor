@@ -1,0 +1,11 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Formula Transformations
+(maximum 500 observations printed)
+
+                             Measurement
+ Variable Name      Role        Level       Formula
+
+Rev_GiftTimeLast    INPUT     INTERVAL      1*GiftTimeLast       
+MonetaryValue       INPUT     INTERVAL      GiftAvgAll*GiftCntAll
